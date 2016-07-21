@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.Default.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.NuGet.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.NuGet.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{FDEBC1F7-E91F-42A5-A307-C7833A9006B1}</ProjectGuid>
@@ -25,11 +26,12 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\typings\office-js\office-js.d.ts" />
     <TypeScriptCompile Include="Util.ts" />
-    <TypeScriptCompile Include="Types\Assert.d.ts" />
-    <TypeScriptCompile Include="Types\IntelliSense.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\Assert.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -44,6 +46,20 @@
     <RootNamespace>CodeSnippetsUtil</RootNamespace>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptOutFile>Output\SnippetUtil.js</TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
   <ProjectExtensions>
     <VisualStudio>
@@ -71,5 +87,4 @@
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
