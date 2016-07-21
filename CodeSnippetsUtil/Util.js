@@ -14,6 +14,17 @@ var CodeSnippets;
             });
         }
         Util.ensureCleanSheet = ensureCleanSheet;
+        function cleanWorkBook() {
+            return Excel.run(function (ctx) {
+                for (var worksheet in ctx.workbook.worksheets.items) {
+                    worksheet.delete();
+                }
+                ;
+                return ctx.sync().then(function () {
+                });
+            });
+        }
+        Util.cleanWorkBook = cleanWorkBook;
         function ensureSheetExists(name) {
             return Excel.run(function (ctx) {
                 var sheet = ctx.workbook.worksheets.getItemOrNull(name);

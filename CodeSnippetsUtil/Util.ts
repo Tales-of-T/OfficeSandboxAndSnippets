@@ -11,6 +11,16 @@
         });
     }
 
+    export function cleanWorkBook(): OfficeExtension.IPromise<any> {
+        return Excel.run(function (ctx) {
+            for (var worksheet in ctx.workbook.worksheets.items) {
+                worksheet.delete();
+            };
+            return ctx.sync().then(function () {
+            };
+        });
+    }
+
     export function ensureSheetExists(name: string): OfficeExtension.IPromise<any> {
         return Excel.run(function (ctx) {
             var sheet = ctx.workbook.worksheets.getItemOrNull(name);
