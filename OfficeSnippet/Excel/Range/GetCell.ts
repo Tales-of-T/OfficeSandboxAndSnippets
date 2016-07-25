@@ -1,5 +1,5 @@
 ﻿module CodeSnippets {
-    function snippet_Range_GetCell(): IInternalSnippet {
+    export function snippet_Range_GetCell(): IInternalSnippet {
         return {
             name: "Get Cell",
             category: "Range",

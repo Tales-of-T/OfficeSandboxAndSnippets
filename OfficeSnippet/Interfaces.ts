@@ -1,4 +1,4 @@
-﻿module CodeSnippets {
+﻿declare module CodeSnippets {
     export module Interface {
         export interface ISnippet<T extends ICodeExternal | ICodeInternal> {
             name: string,

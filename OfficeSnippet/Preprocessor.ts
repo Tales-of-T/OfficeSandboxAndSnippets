@@ -1,16 +1,15 @@
 ﻿module CodeSnippets {
-    export function getAllSnippets(): { [name: string]: Interface.ISnippet<Interface.ICodeExternal>; } {
+    export function getAllSnippets(): { [name: string]: Interface.ISnippet<Interface.ICodeExternal> } {
         var snippets: { [name: string]: Interface.ISnippet<Interface.ICodeExternal> } = {};
         var keyword = "snippet_";
         for (var func in CodeSnippets) {
             if (func.substr(0, keyword.length) != keyword) {
                 continue;
             }
-
-            processSnippet((<any>CodeSnippets)[func]);
+            snippets[func] =  processSnippet((<any>CodeSnippets)[func]());
         }
 
-        return snippets;
+        return snippets; 
 
         function processSnippet(snippet: IInternalSnippet): Interface.ISnippet<Interface.ICodeExternal> {
             var output: Interface.ISnippet<Interface.ICodeExternal> = <any>snippet;
@@ -41,12 +40,14 @@
                 inputStrings.forEach(function (element) {
                     element.slice(minIndex);
                 });
-                // return Array.join();
+               
                 return inputStrings.join(); 
             }
 
             function compileTypeScript(input: string): string {
-                return null; // FIXME
+             //   var tsc = require('typescript-compiler');
+             //   return tsc.compile(input);
+                return "fix me";
             }
 
             function isTrulyJavaScript(text: string) {

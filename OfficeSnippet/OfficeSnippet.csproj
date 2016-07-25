@@ -23,16 +23,15 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app.css" />
-    <Content Include="Assert.js" />
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Excel\Range\GetCell.ts" />
     <TypeScriptCompile Include="Interfaces.ts" />
     <TypeScriptCompile Include="Preprocessor.ts" />
+    <Content Include="require.js" />
     <TypeScriptCompile Include="Scripts\typings\Assert.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\require.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\office-js\office-js.d.ts" />
-    <TypeScriptCompile Include="_references.ts" />
+    <None Include="tsconfig.json" />
+    <TypeScriptCompile Include="Scripts\typings\SnippetUtil.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -45,11 +44,12 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptOutFile>Output\Snippets.js</TypeScriptOutFile>
+    <TypeScriptOutFile>Output\Snippets</TypeScriptOutFile>
     <TypeScriptOutDir />
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
     <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />

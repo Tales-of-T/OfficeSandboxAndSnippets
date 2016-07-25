@@ -23,21 +23,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\office-js\office-js.d.ts" />
     <TypeScriptCompile Include="Util.ts" />
     <TypeScriptCompile Include="Scripts\typings\Assert.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

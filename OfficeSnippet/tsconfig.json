@@ -1,0 +1,13 @@
+﻿{
+  "compilerOptions": {
+    "module": "none",
+    "noImplicitAny": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "outFile": "output/snippets.js",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "output/"
+  },
+  "compileOnSave": true
+}
