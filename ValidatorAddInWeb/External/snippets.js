@@ -10,6 +10,7 @@ var CodeSnippets;
             snippets[func] = processSnippet(CodeSnippets[func]());
         }
         return snippets;
+
         function processSnippet(snippet) {
             var output = snippet;
             output.code.jsOrTs = processJsOrTs(snippet.code.jsOrTs);

@@ -22,3 +22,4 @@ var App;
     }
     App.showNotification = showNotification;
 })(App || (App = {}));
+//# sourceMappingURL=App.js.map

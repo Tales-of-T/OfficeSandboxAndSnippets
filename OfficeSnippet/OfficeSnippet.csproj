@@ -23,11 +23,13 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Excel\Chart\GetImage.ts" />
     <TypeScriptCompile Include="Excel\Range\GetCell.ts" />
     <TypeScriptCompile Include="Interfaces.ts" />
     <TypeScriptCompile Include="Preprocessor.ts" />
     <Content Include="require.js" />
     <TypeScriptCompile Include="Scripts\typings\Assert.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\es6-promise\es6-promise.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\require.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\office-js\office-js.d.ts" />
     <None Include="tsconfig.json" />
