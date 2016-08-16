@@ -1,5 +1,5 @@
 module CodeSnippets {
-    export function snippet_WorksheetCollection_add(): IInternalSnippet {
+    export function snippet_Worksheet_GetCell(): IInternalSnippet {
         return {
             name: "",
             category: "",
@@ -12,18 +12,19 @@ module CodeSnippets {
             code: {
                 jsOrTs: function () {
                     return Excel.run(function (ctx) {
-                        var wSheetName = 'Sample Name';
-                        var worksheet = ctx.workbook.worksheets.add(wSheetName);
-                        worksheet.load('name');
+                        var sheetName = "Sheet1";
+                        var rangeAddress = "A1:F8";
+                        var worksheet = ctx.workbook.worksheets.getItem(sheetName);
+                        var cell = worksheet.getCell(0, 0);
+                        cell.load('address');
                         return ctx.sync().then(function () {
-                            console.log(worksheet.name);
+                            console.log(cell.address);
+                        }).catch(function (error) {
+                            console.log("Error: " + error);
+                            if (error instanceof OfficeExtension.Error) {
+                                console.log("Debug info: " + JSON.stringify(error.debugInfo));
+                            }
                         });
-                    }).catch(function (error) {
-                        console.log("Error: " + error);
-                        if (error instanceof OfficeExtension.Error) {
-                            console.log("Debug info: " + JSON.stringify(error.debugInfo));
-                        }
-                    });
                 }
             },
             validator: function () {

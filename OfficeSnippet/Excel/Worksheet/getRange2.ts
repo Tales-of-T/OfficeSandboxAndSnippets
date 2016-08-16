@@ -1,5 +1,5 @@
 module CodeSnippets {
-    export function snippet_WorksheetCollection_add(): IInternalSnippet {
+    export function snippet_Range_GetRangeTwo(): IInternalSnippet {
         return {
             name: "",
             category: "",
@@ -12,11 +12,12 @@ module CodeSnippets {
             code: {
                 jsOrTs: function () {
                     return Excel.run(function (ctx) {
-                        var wSheetName = 'Sample Name';
-                        var worksheet = ctx.workbook.worksheets.add(wSheetName);
-                        worksheet.load('name');
+                        var sheetName = "Sheet1";
+                        var rangeName = 'MyRange';
+                        var range = ctx.workbook.worksheets.getItem(sheetName).getRange(rangeName);
+                        range.load('address');
                         return ctx.sync().then(function () {
-                            console.log(worksheet.name);
+                            console.log(range.address);
                         });
                     }).catch(function (error) {
                         console.log("Error: " + error);

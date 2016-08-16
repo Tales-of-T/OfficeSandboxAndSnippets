@@ -1,5 +1,5 @@
 module CodeSnippets {
-    export function snippet_WorksheetCollection_add(): IInternalSnippet {
+    export function snippet_Worksheet_GetUsedRange(): IInternalSnippet {
         return {
             name: "",
             category: "",
@@ -12,11 +12,12 @@ module CodeSnippets {
             code: {
                 jsOrTs: function () {
                     return Excel.run(function (ctx) {
-                        var wSheetName = 'Sample Name';
-                        var worksheet = ctx.workbook.worksheets.add(wSheetName);
-                        worksheet.load('name');
+                        var wSheetName = 'Sheet1';
+                        var worksheet = ctx.workbook.worksheets.getItem(wSheetName);
+                        var usedRange = worksheet.getUsedRange();
+                        usedRange.load('address');
                         return ctx.sync().then(function () {
-                            console.log(worksheet.name);
+                            console.log(usedRange.address);
                         });
                     }).catch(function (error) {
                         console.log("Error: " + error);
@@ -24,6 +25,7 @@ module CodeSnippets {
                             console.log("Debug info: " + JSON.stringify(error.debugInfo));
                         }
                     });
+
                 }
             },
             validator: function () {

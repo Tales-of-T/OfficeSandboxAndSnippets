@@ -1,5 +1,5 @@
 module CodeSnippets {
-    export function snippet_Range_GetCell(): IInternalSnippet {
+    export function snippet_WorksheetCollection_Getter(): IInternalSnippet {
         return {
             name: "",
             category: "",
